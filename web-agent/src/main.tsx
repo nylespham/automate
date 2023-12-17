@@ -4,6 +4,7 @@ import App from "./App.tsx"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Signin from "./routes/Signin.tsx"
 import Cars from "./routes/Cars.tsx"
+import Contact from "./routes/Contact.tsx"
 
 const router = createBrowserRouter([
   { 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/cars",
     element: <Cars />
+  },
+  {
+    path: "/contact",
+    element: <Contact />
   }
 ])
 
