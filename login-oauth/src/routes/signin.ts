@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { body, validationResult } from "express-validator";
+import { body } from "express-validator";
 import { validateRequest } from "../middlewares/validate-request";
 
 const router = express.Router();
@@ -10,9 +10,9 @@ router.post("/users/signin", [
 ], 
 validateRequest,
 (req: Request, res: Response) => {
-    const result = validationResult(req);
-    const { username, password } = req.body
+    const { username, password } = req.body;
     console.log(username, password);
+    res.status(201).send({})
 })
 
 export { router as signinRouter };
