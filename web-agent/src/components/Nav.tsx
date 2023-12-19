@@ -1,11 +1,33 @@
 import automate from "../assets/automate.png";
 import { NavLink } from "react-router-dom";
 
+
+function isLoggedIn(props: any, signedIn: boolean) {
+    const id = 1;
+    const loggedIn = signedIn;
+    if (loggedIn) {
+        return (
+            <div className="dropdown nav-item">
+            <button type="button" className="btn btn-primary" data-bs-toggle="dropdown" aria-expended="false">
+                {props}
+            </button>
+            <ul className="dropdown-menu" style={ { right: "0", left: "auto" }}>
+              <li><NavLink className="dropdown-item" to={`/users/${id}/profile`}>Profile</NavLink></li>
+              <li><hr className="dropdown-divider"/></li>
+              <li><NavLink className="dropdown-item" to="/users/signout">Sign Out</NavLink></li>
+            </ul>
+          </div>
+        )
+    }
+}
+
 export default function Nav() {
+    
+    const userName = "user01"
     return (
-        <nav className="navbar navbar-expand-lg bg-dark bg-body-tertiary" data-bs-theme="dark">
+        <nav className="navbar navbar-expand-lg bg-dark bg-body-terti ary" data-bs-theme="dark">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/"><img src={automate} style={ {width: "32px", height: "32px"} }/>Automate</NavLink>
+                <NavLink className="navbar-brand" to="/"><img src={automate} style={ {width: "30px", height: "30px"} }/>AutoMate</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -41,15 +63,29 @@ export default function Nav() {
                         <li><hr className="dropdown-divider"/></li>
                         <li><NavLink className="dropdown-item" to="/">Become Our Partner</NavLink></li>
                     </ul>
-                    </li>
-
+                    </li> 
                 </ul>
+                
                 <form className="d-flex" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     <button className="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                <div className="d-flex">
+                        <p>Space</p>
                 </div>
+                <div className="d-flex">   
+                    {isLoggedIn(userName, false)} 
+                </div>
+                
+
+                </div>
+
+
+
+
+                
             </div>
+            
         </nav>
     )
 }

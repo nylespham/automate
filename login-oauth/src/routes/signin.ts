@@ -5,13 +5,13 @@ import { validateRequest } from "../middlewares/validate-request";
 const router = express.Router();
 
 router.post("/users/signin", [
-    body("username").isEmail().withMessage("Username must be an email"),
+    body("email").isEmail().withMessage("Username must be an email"),
     body("password").trim().notEmpty().withMessage("Password cannot be empty")
 ], 
 validateRequest,
 (req: Request, res: Response) => {
-    const { username, password } = req.body;
-    console.log(username, password);
+    const { email, password } = req.body;
+    console.log(email, password);
     res.status(201).send({})
 })
 
